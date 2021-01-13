@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const stuffRoutes = require('./routes/stuff');
+
 //const prosumerRoutes = require('./routes/prosumer');
 
 //We make here the connection between our app and the database
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/api/stuff',stuffRoutes);
+
 //app.use('/api/auth', prosumerRoutes);
 
 module.exports = app; //export the app to use it on the server

@@ -1,46 +1,27 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const Prosumer = require('../models/prosumer');
+// Check la doc pour afficher l'API dans un navigateur. Normalement à l'installation ça doit te proposer une interface
+// (généralement c'est un format appelé Swagger) et à partir de cette interface tu pourras appeler les fonctions en dessous
 
-//Creation of a prosumer account
+// Code pour relier l'url souhaitée dans l'API : ex "/prosumer"
+// a ta méthode findAll dans le repository
+// d'abord sans paramètre
+// puis teste avec une date en paramètre -> il te faut une colonne DateTime dans ta base de données
 
-exports.signup = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10) //the higher salt is the higher the password will be secured
-        .then(hash => {
-            const prosumer = new Prosumer({
-                email: req.body.email,
-                password: hash
-            });
-            prosumer.save()
-                .then(() => res.status(201).json({ message: 'Prosumer account created !' }))
-                .catch(error => res.status(400).json({ error }));
-        })
-        .catch(error => res.status(500).json({ error }));
-};
+let express = require('express')
+const app = require('app');
 
-//Connection to a prosumer account
+const Prosumer = require('../repository/Prosumer');
 
-exports.login = (req, res, next) => {
-    Prosumer.findOne({ email: req.body.email }) //Look into the database if the email is saved
-        .then(prosumer => {
-            if (!prosumer) {
-                return res.status(401).json({ error: 'Prosumer account not found' });
-            }
-            bcrypt.compare(req.body.password, prosumer.password) //If the email is found, then the password is checked using bcrypt compare function
-                .then(valid => {
-                    if (!valid) {
-                        return res.status(401).json({ error: 'Incorrect password' });
-                    }
-                    res.status(200).json({
-                        userId: prosumer._id,
-                        token: jwt.sign(
-                            { userId: prosumer._id }, //to be sure that the token is corresponding to the right user
-                            'RANDOM_TOKEN_SECRET',
-                            { expiresIn: '24h' }
-                        )
-                    });
-                })
-                .catch(error => res.status(500).json({ error }));
-        })
-        .catch(error => res.status(500).json({ error }));
-};
+app.get('/prosumer', function (req, res) {
+    let prosumers = Prosumer.findAll()
+    console.log(prosumers)
+    let response = prosumers // tes objets prosumer a mettre dedans -> regarde la syntaxe
+    res.send(response)
+})
+
+app.get('/prosumer/{email}', function(req, res) {
+    // appelle ton repository prosumer.find(email) -> regarde comment récupérer le param email dans la doc
+    var response = {} // normalement ça va te renvoyer du format JSON
+    res.send(response)
+})
+
+app.listen(3000)
