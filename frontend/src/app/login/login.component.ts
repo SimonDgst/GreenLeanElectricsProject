@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProsumerService} from '../services/prosumer.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private prosumerService: ProsumerService) { }
 
   ngOnInit() {
+  }
+
+  login(): void {
+    console.log('Connected');
+    this.prosumerService.getProsumers().subscribe((prosumers) => { console.log(prosumers); });
+
   }
 
 }
