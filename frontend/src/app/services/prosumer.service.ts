@@ -16,7 +16,7 @@ export class ProsumerService {
     }
 
     getProsumers(): Observable<any> {
-        const url = this._urlApi + `prosumer/`;
+        const url = this._urlApi + `prosumers/`;
         return this.httpClient.get(url).pipe(map (prosumers => {
             return prosumers;
         }));

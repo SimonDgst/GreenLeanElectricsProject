@@ -11,14 +11,14 @@ const app = require('app');
 
 const Prosumer = require('../repository/Prosumer');
 
-app.get('/prosumer', function (req, res) {
+app.get('/prosumers', function (req, res) {
     let prosumers = Prosumer.findAll()
     console.log(prosumers)
     let response = prosumers // tes objets prosumer a mettre dedans -> regarde la syntaxe
     res.send(response)
 })
 
-app.get('/prosumer/{email}', function(req, res) {
+app.get('/prosumers/{email}', function(req, res) {
     // appelle ton repository prosumer.find(email) -> regarde comment récupérer le param email dans la doc
     var response = {} // normalement ça va te renvoyer du format JSON
     res.send(response)
