@@ -23,5 +23,3 @@ app.get('/prosumers/{email}', function(req, res) {
     var response = {} // normalement ça va te renvoyer du format JSON
     res.send(response)
 })
-
-app.listen(3000)

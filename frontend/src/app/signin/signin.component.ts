@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProsumerService } from '../services/prosumer.service';
 
 @Component({
   selector: 'app-signin',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
+
 
 }

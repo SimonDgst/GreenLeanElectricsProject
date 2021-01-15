@@ -1,6 +1,6 @@
 //Requests to have data about speed from database
 
-findOne = () => {
+exports.findOne = () => {
     var MongoClient = require('mongodb').MongoClient;
     var url = "mongodb+srv://SimonAd:srfc@cluster0.gbrfg.mongodb.net/";
 
@@ -16,7 +16,7 @@ findOne = () => {
 
 }
 
-findAll = () => {
+exports.findAll = () => {
     var MongoClient = require('mongodb').MongoClient;
     var url = "mongodb+srv://SimonAd:srfc@cluster0.gbrfg.mongodb.net/";
 

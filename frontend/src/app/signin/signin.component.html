@@ -1,1 +1,39 @@
-<p>signin works!</p>
+<header>
+    <h1 class="header-title">
+        Green Lean Electrics
+    </h1>
+    <ul class="header-navigation">
+        <li>
+            <a class="header-link" routerLink="/default" routerLinkActive="active">home</a>
+        </li>
+    </ul>
+</header>
+
+<div class="page">
+
+    <div class="form">
+        <form (ngSubmit)="signin()">
+            <h3 class="form-title">Welcome to Green Lean Electrics!</h3><br>
+            <h5>Enter your information to register</h5>
+            <label for="lastname">last name:</label><br>
+            <input type="text" id="lastname" name="lastname"><br><br>
+            <label for="firstname">first name:</label><br>
+            <input type="text" id="firstname" name="firstname"><br><br>
+            <label for="email">email:</label><br>
+            <input type="text" id="email" name="email" placeholder="example@example.com"><br><br>
+            <label for="password">password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <label for="numberofroomies">number of roomies:</label><br>
+            <input type="number" id="numberofroomies" name="numberofroomies"><br><br>
+            <label for="city">city:</label><br>
+            <input type="text" id="city" name="city"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
